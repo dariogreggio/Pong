@@ -38,7 +38,7 @@ int MobErase(HDC hDC,struct MOB *mp) {
 
 int MobDraw(HDC hDC,struct MOB *mp) {
 
-	SelectObject(hCompDC,mp->hImg); //v. space invaders, non Ë sempre cosÏ...
+	SelectObject(hCompDC,mp->hImg); //v. space invaders, non √® sempre cos√¨...
 	if(doubleSize==2)
 		return StretchBlt(hDC,mp->x.whole,mp->y.whole,mp->s.cx*2,mp->s.cy*2,hCompDC,0,0,mp->s.cx,mp->s.cy,SRCCOPY);
 	else
@@ -503,7 +503,7 @@ BYTE isFucileInBall(struct MOB *mp) {
 		y>=(mp->y.whole) && y<(mp->y.whole+mp->s.cy)) {
 
 		int i=GetBitmapBits(mp->hImgAlt,sizeof(buf),buf);		// questa restituisce 32bpp, vecchia storia...
-//		i=GetObject(mp->hImgAlt,sizeof(buf),buf);		// solo propriet‡ bitmap...
+//		i=GetObject(mp->hImgAlt,sizeof(buf),buf);		// solo propriet√† bitmap...
 		x2=x-mp->x.whole; x2/=doubleSize;
 		y2=y-mp->y.whole; y2/=doubleSize;
 		c=buf[y2*mp->s.cx/doubleSize+x2];
@@ -525,7 +525,7 @@ BYTE hitBorder(struct MOB *m1) {
 	int n;
 	int x=m1->x.whole+m1->s.cx/2;
 	int y=m1->y.whole+m1->s.cy/2;			// centro
-#define BORDER_OFFSET 2 //BALL_SIZE gi‡ incluso
+#define BORDER_OFFSET 2 //BALL_SIZE gi√† incluso
 
 	if(tipoGioco<GIOCO_FUCILE) {
 		if(y < (UPPER_BORDER+BORDER_OFFSET)*doubleSize) {
