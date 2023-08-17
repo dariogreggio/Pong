@@ -43,7 +43,7 @@ int nauLChar[2]={VK_RIGHT,'Q'},nauRChar[2]={VK_LEFT,'A'},nauFChar[2]={VK_SPACE,'
 	0,12,24,37,48,60,70,80,
 	90,98,106,112,117,122,125,127
 	};*/
-BYTE sinTable[8]={				// uso 0..45°
+BYTE sinTable[8]={				// uso 0..45Â°
 //	 12, 38, 60, 78, 94,108,119,128
 	 32, 32+24, 32+24+22, 32+24+22+18, 32+24+22+18+14,32+24+22+18+14+10,32+24+22+18+14+10+6,128
 	};
@@ -327,7 +327,7 @@ updPlay:
 							LineTo(hDC,AppXSizeR-5*doubleSize,5*doubleSize);
 							MoveToEx(hDC,5*doubleSize,AppYSizeR-5*doubleSize,NULL);
 							LineTo(hDC,AppXSizeR-5*doubleSize,AppYSizeR-5*doubleSize);
-							if(tipoGioco<GIOCO_SQUASH) {		// in alcune foto è al contrario, tratteggio il bordo e intera la rete...
+							if(tipoGioco<GIOCO_SQUASH) {		// in alcune foto Ã¨ al contrario, tratteggio il bordo e intera la rete...
 								SelectObject(hDC,hPen3);
 								MoveToEx(hDC,AppXSizeR/2,8*doubleSize,NULL);
 								LineTo(hDC,AppXSizeR/2,AppYSizeR-5*doubleSize);
@@ -534,7 +534,7 @@ plot_credit:
 
 			credit=0;
 
-			timeBeginPeriod(1);		// è lento.. e non fa nulla..
+			timeBeginPeriod(1);		// Ã¨ lento.. e non fa nulla..
 			hTimer=SetTimer(hWnd,1,20,NULL);
 
 #ifdef _DEBUG
