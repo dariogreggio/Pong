@@ -27,13 +27,15 @@ struct MOB {
 	HANDLE hImg,hImgAlt;
 	union POS_FRACT x,y;
 	SIZE s;
-	unsigned char bVis;
+	BYTE bVis;
 	BYTE mirrorX,mirrorY;
+	BYTE magnify;
 	POINT speed;
 	unsigned int punti;
 	int res1;          // usato per computare speed
 	HANDLE hImgOld;
-	BYTE bUseTransparency;		// evita flicker se non serve...
+	BYTE bSaveImage;		// evita flicker se non serve...
+	BYTE bTransparent;		// 
   };
 
 
@@ -55,6 +57,7 @@ struct MOB {
 #define SCORE_AREA 40
 #define MAX_PUNTI 15
 #define MAX_TEMPO 60
+#define TIMER_GRANULARITY 20
 
 enum TIPO_GIOCO {
 	GIOCO_TENNIS,
@@ -96,12 +99,18 @@ BOOL PlayResource(LPSTR lpName);
 
 int animateMobs(HWND);
 int loadMobs(BYTE);
+
+int MobCreate(struct MOB *mp,int img1,int img2,WORD cx,WORD cy,BYTE bSaveImage);
+int MobSetImage(struct MOB *mp,int img1,int img2);
 int MobErase(HDC,struct MOB *);
 int MobDraw(HDC,struct MOB *);
 int MobMove(HDC,struct MOB *,SIZE) ;
 int MobDrawXY(HDC,struct MOB *,WORD,WORD);
 int MobCollisionRect(struct MOB *,RECT *);
 int MobCollisionPoint(struct MOB *,POINT);
+int MobSetColor(struct MOB *,BYTE w,COLORREF forecolor,COLORREF backcolor);
+COLORREF MobGetColor(struct MOB *mp,DWORD where);
+
 struct MOB *initBall(struct MOB *);
 WORD getBallSpeed(BYTE s,BYTE a);
 DWORD isBallInBat(struct MOB *);
